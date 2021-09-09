@@ -81,7 +81,7 @@ public int findStopCodon(String dna, int startIndex, String stopCodon) {
         StorageResource sr2 = getAllGenes(empty);
         for (String gene : sr2.data()) {
             system.out.println(gene);
-        }
+        } 
     }
 
 
