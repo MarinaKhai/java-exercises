@@ -1,0 +1,4 @@
+FindSubstrings.java,
+
+are a part of coursera program of Duke University. Course's name is Java Programming: Solving Problems with Software;
+these are problem solving exercises made by myself without any copy-paste.
