@@ -1,4 +1,19 @@
+import edu.duke.*;
 public class FindSubstrings {
+
+//take a string (dna), return index of a substring (stopCodon) with a certain position conditions, starting from (startIndex).
+public int findStopCodon(String dna, int startIndex, String stopCodon) {
+    int currIndex = dna.indexOf(stopCodon, startIndex+3);
+    //while the codon's instances are present in a string
+    while (currIndex != -1) {
+        if ((currIndex - startIndex) % 3 == 0) {
+            return currIndex;
+        }
+    //if not found, update area of search
+        currIndex = dna.indexOf(stopCodon, currIndex+1);
+    }
+    return dna.length();
+}
 
 //Return substring: closest relevant gene from a given string;
     public String findGene(String dna, int startFrom) {
@@ -18,22 +33,9 @@ public class FindSubstrings {
         return dna.substring(startIndex, minStopIndex+3);
     }
 
-//take a string (dna), return index of a substring (stopCodon) with a certain position conditions, starting from (startIndex).
-    public int findStopCodon(String dna, int startIndex, String stopCodon) {
-        int currIndex = dna.indexOf(stopCodon, startIndex+3);
-        //while the codon's instances are present in a string
-        while (currIndex != -1) {
-            if ((currIndex - startIndex) % 3 == 0) {
-                return currIndex;
-            }
-        //if not found, update area of search
-            currIndex = dna.indexOf(stopCodon, currIndex+1);
-        }
-        return dna.length();
-    }
-
 //Print all genes present in a string
-    public void printAllGenes(String dna) {
+    public StorageResource getAllGenes(String dna) {
+        StorageResource sr = new StorageResource();
         int startIndex = 0;
         String currGene = "";
         while (true) {
@@ -41,11 +43,14 @@ public class FindSubstrings {
             if (currGene.isEmpty()) {
                 break;
             }
-            System.out.println(currGene);
-
+            sr.add(currGene);
             startIndex = dna.indexOf(currGene, startIndex) + currGene.length();
         }
+        return sr;
     }
+
+
+// Test methods
 
     public void testFindGene() {
         System.out.println("In xxxxxxyyyzzzTAA there is no ATG, findGene() should return empty str. \nIt returns: " + findGene("xxxxxxyyyzzzTAA", 0));
@@ -65,11 +70,20 @@ public class FindSubstrings {
         System.out.println("In a string ATGxxxyyy stop codon is absent (" + findStopCodon("ATGxxxyyy", 0, "TAA") + "th index - length of string) (9).");
         System.out.println("In a string \"\" stop codon is absent (" + findStopCodon("", 0, "TAA") + "th index - length of string) (0).");
     }
-    public void testPrintAllGenes() {
-        printAllGenes("xxxATGxxxyyyzzzTAAyyyATGxxxTAGzzzxxxATGTGA");
-        printAllGenes("");
-        printAllGenes("yyyATGATGyyyTAAyyy");
+
+    public void testGetAllGenes() {
+        String dna = "xxxATGxxxyyyzzzTAAyyyATGxxxTAGzzzxxxATGTGAyyyATGATGyyyTAAyyy";
+        StorageResource sr = getAllGenes(dna);
+        for (String gene : sr.data()) {
+            system.out.println(gene);
+        }
+        String empty = "";
+        StorageResource sr2 = getAllGenes(empty);
+        for (String gene : sr2.data()) {
+            system.out.println(gene);
+        }
     }
+
 
     public static void main(String[] args) {
         FindSubstrings obj1 = new FindSubstrings();
