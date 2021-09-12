@@ -1,6 +1,6 @@
 /**
  * ImageFiltering class provides methods for filtering images. The filters are:
- * shades of gray, inverter, fragment, blur, sepia
+ * shades of gray, inverter, redSunset - mine; (fragment, blur, sepia)
  * @author (your name) 
  * @version (a version number or a date)
     */
@@ -45,16 +45,34 @@ public class ImageFiltering {
         }
         return outImage;
     }
+    public ImageResource makeRedSunset(ImageResource inImage) {
+        //Make a blank image of the same size
+        ImageResource outImage = new ImageResource(inImage.getWidth(), inImage.getHeight());
+        for (Pixel px : outImage.pixels()) {
+            Pixel inPx = inImage.getPixel(px.getX(), px.getY());
+
+            px.setRed(inPx.getRed() + 40);
+            px.setGreen(inPx.getGreen() - 20);
+            px.setBlue(inPx.getBlue() - 40);
+
+        }
+        return outImage;
+    }
+
     public void applyToSelectedFiles() {
         DirectoryResource dr = new DirectoryResource();
         for (File f : dr.selectedFiles()) {
             ImageResource inImage = new ImageResource(f);
-            ImageResource gray = makeGray(inImage);
+            ImageResource gray = makeRedSunset(inImage);
             String fname = inImage.getFileName();
-            String newName = "gray-"+ fname;
+            String newName = "img/red_sunset-"+ fname;
             gray.setFileName(newName);
             gray.draw();
             gray.save();
         }
+    }
+    public static void main(String[] args) {
+        ImageFiltering obj1 = new ImageFiltering();
+        obj1.applyToSelectedFiles();
     }
 }
