@@ -1,0 +1,106 @@
+package com.company;
+
+public class Burger {
+    private String name;
+    private String rollType;
+    private String meat;
+    private int lettuce;
+    private int tomato;
+    private int olives;
+    private int cucumber;
+    private int basePrice;
+    private int finalPrice;
+    private boolean hasLettuce = false;
+    private boolean hasTomato = false;
+    private boolean hasOlives = false;
+    private boolean hasCucumber = false;
+
+    public Burger(String rollType, String meat) {
+        this.rollType = rollType;
+        this.meat = meat;
+        if (meat.equalsIgnoreCase("beef")) {
+            this.basePrice = 150;
+        }
+        if (meat.equalsIgnoreCase("chicken")) {
+            this.basePrice = 100;
+        }
+        this.lettuce = 50;
+        this.tomato = 60;
+        this.olives = 40;
+        this.cucumber = 20;
+        this.finalPrice = this.basePrice;
+    }
+
+    public int add(int addition) {
+        if (addition == lettuce) {
+            hasLettuce = true;
+        }
+        if (addition == tomato) {
+            hasTomato = true;
+        }
+        if (addition == olives) {
+            hasOlives = true;
+        }
+        if (addition == cucumber) {
+            hasCucumber = true;
+        }
+        return finalPrice += addition;
+    }
+    public String printAdded() {
+        if (hasLettuce) {
+            System.out.println("lettuce, 50 cent");
+        }
+        if (hasTomato) {
+            System.out.println("tomato, 60 cent");
+        }
+        if (hasOlives) {
+            System.out.println("olives, 40 cent");
+        }
+        if (hasCucumber) {
+            System.out.println("cucumber, 20 cent");
+        }
+        if (!hasLettuce && !hasTomato && !hasCucumber && !hasOlives)
+            return "no additions";
+        return "";
+    }
+
+    public void orderInfo() {
+        System.out.println("The base price for " + getClass().getSimpleName() + ": " + basePrice +
+                            ", your additions are: ");
+        System.out.println(printAdded() + "The final price is " + finalPrice);
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        System.out.println("The burger is named "  + name);
+        return name;
+    }
+    public int getLettuce() {
+        System.out.println("Addition: lettuce, It's price: " + this.lettuce);
+        return lettuce;
+    }
+    public int getTomato() {
+        System.out.println("Addition: tomato, It's price: " + this.tomato);
+        return tomato;
+    }
+    public int getOlives() {
+        System.out.println("Addition: olives, It's price: " + this.olives);
+        return olives;
+    }
+    public int getCucumber() {
+        System.out.println("Addition: cucumber, It's price: " + this.cucumber);
+        return cucumber;
+    }
+    public int getBasePrice() {
+        System.out.println("Base price for " + getClass().getSimpleName() + " is " + basePrice);
+        return basePrice;
+    }
+    public int getFinalPrice() {
+        System.out.println("Final price for " + getClass().getSimpleName() + " is " + finalPrice);
+        return finalPrice;
+    }
+
+}
