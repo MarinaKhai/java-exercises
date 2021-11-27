@@ -1,15 +1,17 @@
 package com.company;
-
+//This app is for the customer to choose type of burger and its additions.
+//In the original course video instructor made it for the burgers' owner to help him make up the menu
 public class Burger {
     private String name;
     private String rollType;
     private String meat;
+    private int basePrice;
+    private int finalPrice;
+
     private int lettuce;
     private int tomato;
     private int olives;
     private int cucumber;
-    private int basePrice;
-    private int finalPrice;
     private boolean hasLettuce = false;
     private boolean hasTomato = false;
     private boolean hasOlives = false;
@@ -73,34 +75,26 @@ public class Burger {
     public void setName(String name) {
         this.name = name;
     }
-
     public String getName() {
         System.out.println("The burger is named "  + name);
         return name;
     }
     public int getLettuce() {
-        System.out.println("Addition: lettuce, It's price: " + this.lettuce);
         return lettuce;
     }
     public int getTomato() {
-        System.out.println("Addition: tomato, It's price: " + this.tomato);
         return tomato;
     }
     public int getOlives() {
-        System.out.println("Addition: olives, It's price: " + this.olives);
         return olives;
     }
     public int getCucumber() {
-        System.out.println("Addition: cucumber, It's price: " + this.cucumber);
         return cucumber;
     }
     public int getBasePrice() {
-        System.out.println("Base price for " + getClass().getSimpleName() + " is " + basePrice);
         return basePrice;
     }
     public int getFinalPrice() {
-        System.out.println("Final price for " + getClass().getSimpleName() + " is " + finalPrice);
         return finalPrice;
     }
-
 }

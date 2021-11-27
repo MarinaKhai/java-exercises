@@ -22,7 +22,7 @@ public class DeluxeBurger extends Burger{
     @Override
     public int add(int addition) {
         System.out.println("No extra additions allowed for deluxe burger. Final price is " + finalPrice);
-        return this.finalPrice;
+        return finalPrice;
     }
 
     @Override
