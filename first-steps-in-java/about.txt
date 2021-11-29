@@ -1,5 +1,7 @@
 FindSubstrings.java,
-
+ImageFiltering.java,
+ImageFrame.java
+Shape.java, and others
 are a part of coursera program of Duke University. Course's name is Java Programming: Solving Problems with Software;
 these are problem solving exercises made by myself without any copy-paste.
 StorageResource, FileResource and similar classes are from edu.duke library, created by teachers for training purposes. They simulate standard java classes, but are a little simlified.
